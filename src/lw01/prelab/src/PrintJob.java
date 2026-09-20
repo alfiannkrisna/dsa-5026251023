@@ -18,14 +18,14 @@ public abstract class PrintJob implements Chargeable{
         return pages;
     }
 
-    Override
-    public int calculateCharge();
+    @Override
+    public abstract int calculateCharge();
 
     public int calculateCharge(int copies){
         if(copies <= 0){
             throw new IllegalArgumentException("Copies must be greater than zero");
         }
-        return copies *calculateCharge();
+        return copies * calculateCharge();
     }
 
     public String label(){
@@ -33,6 +33,6 @@ public abstract class PrintJob implements Chargeable{
     }
 
     public String summary(){
-        return id + " | " + label() + " | " + pages + calculateCharge();
+        return id + " | " + label() + " | " + calculateCharge();
     }
 }

@@ -6,7 +6,7 @@ public class Main{
 	public static void main(String[] args) {
 	    List<PrintJob> jobs = new ArrayList<>();
 	    
-		Scanner sc = new Scanner(Main.class.getResourceAsStream("jobs.txt"))
+		Scanner sc = new Scanner(Main.class.getResourceAsStream("jobs.txt"));
 		
 		while(sc.hasNext()){
 		    String type = sc.next();
@@ -14,7 +14,7 @@ public class Main{
 		    int pages = sc.nextInt();
 		    
 		    if(type.equals("MONO")){
-		        jobs.add(new MonoPrint(id, pages))
+		        jobs.add(new MonoPrint(id, pages));
 		    } else if (type.equals("COLOUR")){
 		        jobs.add(new ColourPrint(id, pages));
 		    }

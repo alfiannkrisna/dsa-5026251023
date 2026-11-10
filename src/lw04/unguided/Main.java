@@ -8,6 +8,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             arr[i] = sc.nextInt();
         }
+        int[] duaPass = new int[n];
         for(int i = 0; i < n-1; i++) {
             for(int j = 0; j < n-i-1; j++) {
                 if(arr[j] < arr[j+1]) {
@@ -17,15 +18,16 @@ public class Main {
                 }
             }
             if(i == 1){
-                System.out.println("==== After 2 Passes ====");
                 for(int k = 0; k < n; k++){
-                    System.out.print(arr[k] + " ");
+                    duaPass[k] = arr[k];
                 }
-                System.out.println();
             }
 	    }
+        System.out.println("==== After 2 Passes ====");
+        for(int i = 0; i < n; i++){
+            System.out.print(duaPass[i] + " ");
+        }
         System.out.println();
-
         System.out.println("==== Fully Sorted ====");
         for(int i = 0; i < n; i++){
             System.out.print(arr[i] + " ");

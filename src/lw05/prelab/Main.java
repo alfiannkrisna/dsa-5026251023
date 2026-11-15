@@ -18,12 +18,12 @@ public class Main {
         queue.add(start);
         visited.add(start);
         while (!queue.isEmpty()) {
-            int current = queue.poll();                  // take the building at the front of the queue
+            int current = queue.poll();
             order.add(current);
             for (int next = 0; next < size; next++) {
-                if (graph[current][next] > 0 && !visited.contains(next)) {                          // next is a neighbour that has not been visited
+                if (graph[current][next] > 0 && !visited.contains(next)) {
                     visited.add(next);
-                    queue.add(next);                        // put next at the back of the queue
+                    queue.add(next);
                 }
             }
         }
@@ -34,11 +34,11 @@ public class Main {
     static List<Integer> dfsOrder = new ArrayList<>();  // shared by every recursive call of dfs()
 
     static void dfs(int current) {
-        dfsVisited.add(current);                                    // mark current as visited
+        dfsVisited.add(current);
         dfsOrder.add(current);
         for (int next = 0; next < size; next++) {
             if (graph[current][next] > 0 && !dfsVisited.contains(next)) {
-                dfs(next);                            // go deeper from next
+                dfs(next);
             }
         }
     }
@@ -54,12 +54,12 @@ public class Main {
 
         for (int i = 0; i < size; i++) {
             int current = findTheNextNode(visited, dist);
-            visited[current] = true;                                // mark current as visited
+            visited[current] = true;
             for (int next = 0; next < size; next++) {
                 int newDist = dist[current] + graph[current][next];
-                if (graph[current][next] > 0 && newDist < dist[next]) {   // the new distance is shorter
+                if (graph[current][next] > 0 && newDist < dist[next]) {
                     dist[next] = newDist;
-                    prev[next] = current;                        // remember that next is reached from current
+                    prev[next] = current;
                 }
             }
         }
@@ -79,7 +79,7 @@ public class Main {
         int min = Integer.MAX_VALUE;
         int closest = -1;
         for (int i = 0; i < size; i++) {
-            if (!visited[i] && dist[i] < min) {                          // i is unvisited and closer than min
+            if (!visited[i] && dist[i] < min) {
                 min = dist[i];
                 closest = i;
             }
@@ -92,7 +92,7 @@ public class Main {
         if (current == start) {
             System.out.print(names[current]);
         } else {
-            route(prev[current], start, prev); // print the route up to the previous building
+            route(prev[current], start, prev);
             System.out.print(" -> " + names[current]);
         }
     }
@@ -136,6 +136,5 @@ public class Main {
         printPath(dfsOrder);
 
         dijkstraAlg(start, dest);
-
     }
 }
